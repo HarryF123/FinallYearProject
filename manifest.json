@@ -1,0 +1,35 @@
+{
+	"manifest_version":2, 
+	"short_name":"WBA",
+	"name":"WebBrowserAugment",
+	"description":"Augments Web Searches using related web pages/ material",
+	"version":"1",
+	"author":"Harry Freney",
+	"browser_action":
+	{
+		"default_icon": {
+			"16":"magGlass.png"
+			},
+		"default_popup":"index.html",
+		"browser_style":true
+	},
+	"content_scripts": [
+		{
+		  "matches": ["https://www.google.com/search*"],
+		  "js": ["content.js"]
+		}
+	  ], 
+	  "background": {
+		"service_worker": "background.js"
+	  },
+	  "permissions": [
+		"http://localhost:8080/*",
+        "*://www.google.com/*",
+		"webRequest",
+		"webRequestBlocking",
+		"webNavigation",
+		"activeTab",
+		"contextMenus",
+		"storage"
+	  ]
+}
